@@ -15,10 +15,10 @@ public class ContextListener implements ServletContextListener{
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		System.out.println("执行监听程序");
+		System.out.println("执行上下文监听程序");
 		ServletContext sc = arg0.getServletContext();
 		String breed = sc.getInitParameter("breed");
-		System.out.println("breed："+breed);
+		System.out.println("获取上下文配置参数breed："+breed);
 		Dog dog = new Dog(breed);
 		sc.setAttribute("dog", dog);
 	}

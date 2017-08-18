@@ -1,3 +1,12 @@
-//1.会话计数器的练习；
-java：com.example.web.listener.java
 
+//1.会话计数器的练习：
+com\example\web\servlet\getSessionCountServlet.java
+com\example\web\listener\CountSessionListener.java
+getSessionNum.html
+
+总结：必须servlet中getSession才会去创建一个会话
+*****************************end ********************************		
+//2.会话属性监听练习：
+
+*****************************end ********************************	
+//3.jsp代码帖测验

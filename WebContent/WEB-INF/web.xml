@@ -136,4 +136,27 @@
     <servlet-name>getSessionCountServlet</servlet-name>
     <url-pattern>/getSessionNum</url-pattern>
   </servlet-mapping>
+  <listener>
+    <listener-class>com.example.web.listener.SessionAttributeListener</listener-class>
+  </listener>
+  <servlet>
+    <description>用于添加、修改、删除会话属性</description>
+    <display-name>SessionAttributeServlet</display-name>
+    <servlet-name>SessionAttributeServlet</servlet-name>
+    <servlet-class>com.example.web.servlet.SessionAttributeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SessionAttributeServlet</servlet-name>
+    <url-pattern>/sessionAttribute</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JspTestServlet</display-name>
+    <servlet-name>JspTestServlet</servlet-name>
+    <servlet-class>com.example.web.servlet.JspTestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JspTestServlet</servlet-name>
+    <url-pattern>/JspTestServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
