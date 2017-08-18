@@ -1,27 +1,21 @@
-package com.example.web;
+package com.example.web.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.example.model.Dog;
 
 /**
- * Servlet implementation class ListenServlet
+ * Servlet implementation class NextServlet
  */
-public class ListenServlet extends HttpServlet {
+public class NextServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListenServlet() {
+    public NextServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,24 +23,19 @@ public class ListenServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-		Dog dog = (Dog)getServletContext().getAttribute("dog");
-		String breed = dog.getBreed();
-		PrintWriter writer = response.getWriter();
-		writer.println("您的狗的品种为："+breed);
-		HttpSession  session = request.getSession();
-		session.setAttribute("dog", dog);
-
+		response.setContentType("text/html");
+		String getUsername = request.getParameter("username");
+		response.sendRedirect("GetInit");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		// TODO Auto-generated method stub
 	}
 
 }

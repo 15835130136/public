@@ -1,28 +1,21 @@
-package com.example.web;
+package com.example.web.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.example.model.BeerExpert;
-
 /**
- * Servlet implementation class BeerServlet
+ * Servlet implementation class DispatcherServlet
  */
-public class BeerServlet extends HttpServlet {
+public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BeerServlet() {
+    public DispatcherServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,27 +24,22 @@ public class BeerServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
+		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		BeerExpert beer = new BeerExpert();
-		String c = request.getParameter("color");
-		List result = beer.getBrands(c);
-		request.setAttribute("styles", result);
+		response.setContentType("text/html");
+		String name = request.getParameter("username");
+		request.setAttribute("username", name);
+		//方式一：从request中获取请求分发器
+	//	request.getRequestDispatcher("Dispatcher.jsp").forward(request, response);
+		//方式二：从上下获取请求分发器  区别：只能使用绝对路径，/为web应用根目录
+		getServletContext().getRequestDispatcher("/Dispatcher.jsp").forward(request, response);
 		
-		RequestDispatcher view = request.getRequestDispatcher("result.jsp");
-		view.forward(request, response);
-		
-		/*Iterator it = result.iterator(); 
-		while (it.hasNext()) {
-			out.println("<br>Got  beer color:"+it.next());	
-		}*/
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
